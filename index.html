@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js" integrity="sha512-JPcRR8yFa8mmCsfrw4TNte1ZvF1e3+1SdGMslZvmrzDYxS69J7J49vkFL8u6u8PlPJK+H3voElBtUCzaXj+6ig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="./styles.css">
+    <title>PFC Balance Calculator</title>
+</head>
+<body>
+    <header>
+        <h1 class="title">PFC Balance Calculator</h1>
+    </header>
+    <main class="container">
+        <section class="input-info">
+            <p>Please enter your information below.</p>
+            <div class="input-info-block input-number">
+                <label for="input-info-height">Height: </label>
+                <input type="number" placeholder="cm" id="input-info-height" required>
+            </div>
+            <div class="input-info-block input-number">
+                <label for="input-info-weight">Weight: </label>
+                <input type="number" placeholder="kilogram" id="input-info-weight" required>
+            </div>
+            <div class="input-info-block input-number">
+                <label for="input-info-age">Age: </label>
+                <input type="number" placeholder="Your age" id="input-info-age" min="20" max="74" required>
+            </div>
+            <div class="input-info-block input-info-gender">
+                <span class="input-gender">Gender: </span> 
+                <label for="male">
+                    <input type="radio" id="male" name="input-info-gender" value="male" checked>
+                    Male
+                </label>
+                <label for="female">
+                    <input type="radio" id="female" name="input-info-gender" value="female" required>
+                    Female
+                </label>
+            </div>
+            <div class="input-info-block input-info-activity">
+                <p>Your daily activity level:</p>
+                <label for="low">
+                    <input type="radio" id="low" name="activity-level" value="low" checked>
+                    Low: Mostly sitting for work, cooking etc..
+                </label>
+                <label for="medium">
+                    <input type="radio" id="medium" name="activity-level" value="medium" required>
+                    Medium: Walking around for commute and shopping etc..
+                </label>
+                <label for="high">
+                    <input type="radio" id="high" name="activity-level" value="high">
+                    High: Standing all the time for work or playing sports.
+                </label>
+            </div>         
+            <button id="calculate">Calculate</button>
+            <button id="reset">Reset All</button>
+        </section>
+        <section class="result">
+            <h2>Result</h2>
+            <div class="result-calories-container">
+                <h3>Estimated Energy Requirement</h3>
+                <div class="result-output">
+                    <p id="result-calories">0</p>
+                    <p>Calories</p>
+                </div>
+            </div>
+            <div class="result-p-container">
+                <h3>Protein</h3>
+                <div class="result-output">
+                    <p id="result-p-gram">0</p>
+                    <p>Grams</p>
+                </div>
+                <div class="result-output">
+                    <p id="result-p-calories">0</p>
+                    <p>Calories</p>
+                </div>
+            </div>
+            <div class="result-f-container">
+                <h3>Fat</h3>
+                <div class="result-output">
+                    <p id="result-f-gram">0</p>
+                    <p>Grams</p>
+                </div>
+                <div class="result-output">
+                    <p id="result-f-calories">0</p>
+                    <p>Calories</p>
+                </div>                
+            </div>
+            <div class="result-c-container">
+                <h3>Carbohydrate</h3>
+                <div class="result-output">
+                    <p id="result-c-gram">0</p>
+                    <p>Grams</p>
+                </div>
+                <div class="result-output">
+                    <p id="result-c-calories">0</p>
+                    <p>Calories</p>
+                </div>
+            </div>
+            <div class="pie-chart">
+                <h3>Your Balance (g)</h3>
+                <canvas id="pieChart"></canvas>
+            </div>
+        </section>
+    </main>
+    <script type="text/babel" src="./index.js"></script>
+</body>
+</html>
